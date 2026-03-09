@@ -1,6 +1,7 @@
 package com.example.diceroller
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +18,21 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val image : ImageView = findViewById(R.id.diceimage)
-
+        val image: ImageView = findViewById(R.id.diceimage)
+        val btn: Button = findViewById(R.id.roll)
+        btn.setOnClickListener {
+            val random = (1..6).random()
+            
+            val imageSrc = when (random) {
+                1 -> R.drawable.dice_1
+                2 -> R.drawable.dice_2
+                3 -> R.drawable.dice_3
+                4 -> R.drawable.dice_4
+                5 -> R.drawable.dice_5
+                else -> R.drawable.dice_6
+            }
+            image.setImageResource(imageSrc)
+        }
 
     }
 }
